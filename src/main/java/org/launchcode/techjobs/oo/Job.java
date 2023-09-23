@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.oo;
 
+import javax.lang.model.element.Name;
 import java.util.Objects;
 
 public class Job {
@@ -47,8 +48,21 @@ public class Job {
         return Objects.hash(id);
     }
 
+    @Override
+    public String toString() {
+        String newline = System.lineSeparator();
+        String noData = "Data not available";
 
-    // Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
+        return  newline +
+                "ID: " +  id + newline +
+                "Name: " + (name == null ? noData : name) + newline +
+                "Employer: " + (employer == null || employer.getValue() == null ? noData : employer) + newline +
+                "Location: " + (location == null || location.getValue() == null ? noData : location) + newline +
+                "Position Type: " + (positionType == null || positionType.getValue() == null ? noData : positionType) + newline +
+                "Core Competency: " + (coreCompetency == null || coreCompetency.getValue() == null ? noData : coreCompetency) + newline;
+    }
+
+// Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
 
     public int getId() {

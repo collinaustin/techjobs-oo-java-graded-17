@@ -49,4 +49,64 @@ public class JobTest {
 
         assertFalse(msg, badJob.equals(goodJob));
     }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+
+        String linebreak = System.lineSeparator();
+        String msg = "custom toString method should return a string that contains" +
+                " a blank line before and after the job information.";
+        Job badJob = new Job();
+        String noData = "Data not available";
+
+        assertEquals(msg, badJob.toString(),
+                linebreak +
+                        "ID: " + badJob.getId() + linebreak +
+                        "Name: " + noData + linebreak +
+                        "Employer: " + noData + linebreak +
+                        "Location: " + noData + linebreak +
+                        "Position Type: " + noData + linebreak +
+                        "Core Competency: " + noData + linebreak);
+
+        System.out.println(badJob.toString());
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        String linebreak = System.lineSeparator();
+        String msg = "custom toString method contains all the correct labels and data in a new job.";
+        Job goodJob = new Job("game tester", new Employer("Microsoft"), new Location("Washington"), new PositionType("Tester"), new CoreCompetency("Xbox/PC"));
+
+        assertEquals(msg, goodJob.toString(),
+                        linebreak +
+                        "ID: " + goodJob.getId() + linebreak +
+                        "Name: " + "game tester" + linebreak +
+                        "Employer: " + "Microsoft" + linebreak +
+                        "Location: " + "Washington" + linebreak +
+                        "Position Type: " + "Tester" + linebreak +
+                        "Core Competency: " + "Xbox/PC" + linebreak);
+
+        System.out.println(goodJob.toString());
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        String linebreak = System.lineSeparator();
+        String msg = "If a field is empty, the method should add, 'Data not available' " +
+                        "after the label.";
+        String noData = "Data not available";
+        Job badJob = new Job("game tester", new Employer(null), new Location(null), new PositionType(null), new CoreCompetency("Xbox/PC"));
+
+        assertEquals(msg, badJob.toString(),
+                        linebreak +
+                        "ID: " + badJob.getId() + linebreak +
+                        "Name: " + "game tester" + linebreak +
+                        "Employer: " + noData + linebreak +
+                        "Location: " + noData + linebreak +
+                        "Position Type: " + noData + linebreak +
+                        "Core Competency: " + "Xbox/PC" + linebreak);
+
+        System.out.println(badJob.toString());
+    }
+
 }
