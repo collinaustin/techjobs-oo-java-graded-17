@@ -90,7 +90,7 @@ public class JobTest {
         String msg = "If a field is empty, the method should add, 'Data not available' " +
                         "after the label.";
         String noData = "Data not available";
-        Job badJob = new Job("game tester", new Employer(null), new Location(null), new PositionType(null), new CoreCompetency("Xbox/PC"));
+        Job badJob = new Job("game tester", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency("Xbox/PC"));
 
         assertEquals(
                 msg,

@@ -56,10 +56,10 @@ public class Job {
         return  newline +
                 "ID: " +  id + newline +
                 "Name: " + (name == null ? noData : name) + newline +
-                "Employer: " + (employer == null || employer.getValue() == null ? noData : employer) + newline +
-                "Location: " + (location == null || location.getValue() == null ? noData : location) + newline +
-                "Position Type: " + (positionType == null || positionType.getValue() == null ? noData : positionType) + newline +
-                "Core Competency: " + (coreCompetency == null || coreCompetency.getValue() == null ? noData : coreCompetency) + newline;
+                "Employer: " + (employer == null|| employer.getValue().isEmpty() ? noData : employer) + newline +
+                "Location: " + (location == null || location.getValue().isEmpty() ? noData : location) + newline +
+                "Position Type: " + (positionType == null || positionType.getValue().isEmpty() ? noData : positionType) + newline +
+                "Core Competency: " + (coreCompetency == null || coreCompetency.getValue().isEmpty() ? noData : coreCompetency) + newline;
     }
 
 // Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
