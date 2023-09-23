@@ -57,18 +57,11 @@ public class JobTest {
         String msg = "custom toString method should return a string that contains" +
                 " a blank line before and after the job information.";
         Job badJob = new Job();
-        String noData = "Data not available";
+        String firstChar = String.valueOf(badJob.toString().charAt(0));
+        String lastChar = String.valueOf(badJob.toString().charAt(badJob.toString().length()-1));
 
-        assertEquals(msg, badJob.toString(),
-                linebreak +
-                        "ID: " + badJob.getId() + linebreak +
-                        "Name: " + noData + linebreak +
-                        "Employer: " + noData + linebreak +
-                        "Location: " + noData + linebreak +
-                        "Position Type: " + noData + linebreak +
-                        "Core Competency: " + noData + linebreak);
-
-        System.out.println(badJob.toString());
+        assertEquals(msg, linebreak, firstChar);
+        assertEquals(msg, linebreak, lastChar);
     }
 
     @Test
@@ -77,14 +70,16 @@ public class JobTest {
         String msg = "custom toString method contains all the correct labels and data in a new job.";
         Job goodJob = new Job("game tester", new Employer("Microsoft"), new Location("Washington"), new PositionType("Tester"), new CoreCompetency("Xbox/PC"));
 
-        assertEquals(msg, goodJob.toString(),
-                        linebreak +
+        assertEquals(
+                msg,
+                linebreak +
                         "ID: " + goodJob.getId() + linebreak +
                         "Name: " + "game tester" + linebreak +
                         "Employer: " + "Microsoft" + linebreak +
                         "Location: " + "Washington" + linebreak +
                         "Position Type: " + "Tester" + linebreak +
-                        "Core Competency: " + "Xbox/PC" + linebreak);
+                        "Core Competency: " + "Xbox/PC" + linebreak,
+                goodJob.toString());
 
         System.out.println(goodJob.toString());
     }
@@ -97,14 +92,16 @@ public class JobTest {
         String noData = "Data not available";
         Job badJob = new Job("game tester", new Employer(null), new Location(null), new PositionType(null), new CoreCompetency("Xbox/PC"));
 
-        assertEquals(msg, badJob.toString(),
-                        linebreak +
+        assertEquals(
+                msg,
+                linebreak +
                         "ID: " + badJob.getId() + linebreak +
                         "Name: " + "game tester" + linebreak +
                         "Employer: " + noData + linebreak +
                         "Location: " + noData + linebreak +
                         "Position Type: " + noData + linebreak +
-                        "Core Competency: " + "Xbox/PC" + linebreak);
+                        "Core Competency: " + "Xbox/PC" + linebreak,
+                badJob.toString());
 
         System.out.println(badJob.toString());
     }
