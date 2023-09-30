@@ -60,6 +60,8 @@ public class JobTest {
         String firstChar = String.valueOf(badJob.toString().charAt(0));
         String lastChar = String.valueOf(badJob.toString().charAt(badJob.toString().length()-1));
 
+        assertTrue(msg, badJob.toString().startsWith(linebreak));
+        assertTrue(msg, badJob.toString().endsWith(linebreak));
         assertEquals(msg, linebreak, firstChar);
         assertEquals(msg, linebreak, lastChar);
     }
